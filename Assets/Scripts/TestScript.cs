@@ -1,22 +1,46 @@
+using System.Globalization;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
 public class TestScript : MonoBehaviour
 {
-    int number1 = 9;
-    int number2 = 12;
+    int number = 10;
     void Start()
     {
-        if (number1 > 6 || number2 > 14)
+        // ForLoopExample();
+        // WhileLoopExample();
+        DoWhileLoopExample();
+    }
+    void ForLoopExample()
+    {
+        for (int i = 0; i < 10; i++)
         {
-            Debug.Log("Number1 is bigger than 6, number2 is bigger than 14!");
-
+            Debug.Log(i);
         }
 
-        else
-        {
-            Debug.Log("Number1 is not bigger than 6, number2 not bigger than 14!");
+    }
 
+    void WhileLoopExample()
+    {
+        
+
+        while (number > 0)
+        {
+            Debug.Log(number);
+            number--;
         }
     }
+
+    void DoWhileLoopExample()
+    {
+        number = -5;
+        do
+        {
+            Debug.Log(number);
+            number--;
+        }
+        while (number > 0);
+    }
+    
+
 }
