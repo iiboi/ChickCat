@@ -1,46 +1,11 @@
-using System.Globalization;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
-
 public class TestScript : MonoBehaviour
 {
-    int number = 10;
+    int[] numbers = { 1, 2, 3, 4, 5 };
     void Start()
     {
-        // ForLoopExample();
-        // WhileLoopExample();
-        DoWhileLoopExample();
+        for (int i = 0; i < numbers.Length; i++)
+        Debug.Log(numbers[i]);
     }
-    void ForLoopExample()
-    {
-        for (int i = 0; i < 10; i++)
-        {
-            Debug.Log(i);
-        }
-
-    }
-
-    void WhileLoopExample()
-    {
-        
-
-        while (number > 0)
-        {
-            Debug.Log(number);
-            number--;
-        }
-    }
-
-    void DoWhileLoopExample()
-    {
-        number = -5;
-        do
-        {
-            Debug.Log(number);
-            number--;
-        }
-        while (number > 0);
-    }
-    
-
 }
