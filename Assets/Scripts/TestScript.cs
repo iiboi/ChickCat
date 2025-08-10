@@ -1,11 +1,10 @@
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 public class TestScript : MonoBehaviour
 {
-    int[] numbers = { 1, 2, 3, 4, 5 };
-    void Start()
+    public int variable = 5;
+
+    private void MyFunction()
     {
-        for (int i = 0; i < numbers.Length; i++)
-        Debug.Log(numbers[i]);
+        Debug.Log("My Function Works!");
     }
 }
