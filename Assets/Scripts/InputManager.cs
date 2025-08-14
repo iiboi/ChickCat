@@ -3,15 +3,15 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-    [SerializeField] private GameObject _SphereGameObject;
+    [SerializeField] private EnableDisable _EnableDisable;
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.T))
-            _SphereGameObject.SetActive(true);
+            _EnableDisable.enabled = true;
 
         else if (Input.GetKeyDown(KeyCode.Y))
-            _SphereGameObject.SetActive(false);
+            _EnableDisable.enabled = false;
     }
 }
 
