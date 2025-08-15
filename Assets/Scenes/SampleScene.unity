@@ -1328,9 +1328,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.20514978
-  m_Height: 0.8210081
+  m_Height: 0.8760888
   m_Direction: 1
-  m_Center: {x: 0.0015668422, y: 0.11449599, z: 0}
+  m_Center: {x: 0.0015668422, y: 0.12961116, z: 0}
 --- !u!54 &1151316554
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1371,7 +1371,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OrientationTransform: {fileID: 2071907610}
+  MovementKey: 101
   MovementSpeed: 20
+  Jumpkey: 32
+  JumpForce: 7
+  JumpCoolDown: 0.5
+  Canjump: 1
+  DashKey: 113
+  DashMultiplier: 2
+  DashDrag: 2
+  PlayerHeight: 1
+  GroundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  GroundDrag: 5
 --- !u!1 &1179980364
 GameObject:
   m_ObjectHideFlags: 0
@@ -1666,8 +1679,8 @@ GameObject:
   - component: {fileID: 2109235533}
   - component: {fileID: 2109235532}
   - component: {fileID: 2109235531}
-  m_Layer: 0
-  m_Name: Floor
+  m_Layer: 6
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
