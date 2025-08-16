@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     [Header("Jump Settings")]
 
     [SerializeField] private KeyCode Jumpkey;
-    [SerializeField] private float JumpForce;
+    [SerializeField, Range(0f, 20f)] private float JumpForce;
 
     [SerializeField] private float JumpCoolDown;
 
