@@ -17,7 +17,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Range(0f, 20f)] private float JumpForce;
 
     [SerializeField] private float JumpCoolDown;
-
+    [SerializeField] private float AirMultiplier;
+    [SerializeField] private float AirDrag;
     [SerializeField] private bool Canjump;
 
     [Header("Dash Settings")]
@@ -33,6 +34,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask GroundLayer;
     [SerializeField] private float GroundDrag;
 
+    private StateController StateController;
+
     private Rigidbody PlayerRigidbody;
 
     private float HorizontalInput, VerticalInput;
@@ -41,6 +44,7 @@ public class PlayerController : MonoBehaviour
     private bool IsDashing;
     private void Awake()
     {
+        StateController = GetComponent<StateController>();
         PlayerRigidbody = GetComponent<Rigidbody>();
         PlayerRigidbody.freezeRotation = true;
 
@@ -48,6 +52,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         Setinputs();
+        SetStates();
         SetPlayerDrag();
         LimitPlayerSpeed();
     }
@@ -65,12 +70,10 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(DashKey))
         {
             IsDashing = true;
-            Debug.Log("Player Dashing");
         }
         else if (Input.GetKeyDown(MovementKey))
         {
             IsDashing = false;
-            Debug.Log("Player Moving");
         }
 
         else if (Input.GetKey(Jumpkey) && Canjump && IsGrounded())
@@ -82,33 +85,57 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void SetStates()
+    {
+        var MovementDirection = GetMovementDirection();
+        var Isgrounded = IsGrounded();
+        var CurrentState = StateController.GetCurrentState();
+        var Isdashing = isdashing();
+
+        var NewState = CurrentState switch
+        {
+            _ when MovementDirection == Vector3.zero && Isgrounded && !IsDashing => PlayerState.Idle,
+            _ when MovementDirection != Vector3.zero && Isgrounded && !IsDashing => PlayerState.Move,
+            _ when MovementDirection != Vector3.zero && Isgrounded && IsDashing => PlayerState.Dash,
+            _ when MovementDirection == Vector3.zero && Isgrounded && IsDashing => PlayerState.DashIdle,
+            _ when !Canjump && !Isgrounded => PlayerState.Jump,
+            _ => CurrentState,
+        };
+
+        if (NewState != CurrentState)
+        {
+            StateController.ChangeState(NewState);
+        }
+
+        Debug.Log(NewState);
+    }
+
+
     private void SetPlayerMovement()
     {
         MovementDirection = OrientationTransform.forward * VerticalInput + OrientationTransform.right * HorizontalInput;
 
-        if (IsDashing)
+        float ForceMultiplier = StateController.GetCurrentState() switch
         {
-            PlayerRigidbody.AddForce(MovementDirection.normalized * MovementSpeed * DashMultiplier, ForceMode.Force);
-        }
-        else
-        {
-            PlayerRigidbody.AddForce(MovementDirection.normalized * MovementSpeed, ForceMode.Force);
-        }
-        
+            PlayerState.Move => 1f,
+            PlayerState.Dash => DashMultiplier,
+            PlayerState.Jump => AirMultiplier,
+            _ => 1f
+        };
+
+        PlayerRigidbody.AddForce(MovementDirection.normalized * MovementSpeed * ForceMultiplier, ForceMode.Force);
 
     }
 
     private void SetPlayerDrag()
     {
-        if (IsDashing)
+        PlayerRigidbody.linearDamping = StateController.GetCurrentState() switch
         {
-            PlayerRigidbody.linearDamping = DashDrag;
-        }
-        else
-        {
-            PlayerRigidbody.linearDamping = GroundDrag;
-        }
-        
+            PlayerState.Move => GroundDrag,
+            PlayerState.Dash => DashDrag,
+            PlayerState.Jump => AirDrag,
+            _ => PlayerRigidbody.linearDamping
+        };
     }
 
     private void LimitPlayerSpeed()
@@ -135,5 +162,15 @@ public class PlayerController : MonoBehaviour
     private bool IsGrounded()
     {
         return Physics.Raycast(transform.position, Vector3.down, PlayerHeight * 0.5f + 0.2f, GroundLayer);
+    }
+
+    private Vector3 GetMovementDirection()
+    {
+        return MovementDirection.normalized;
+    }
+
+    private bool isdashing()
+    {
+        return IsDashing;
     }
 }

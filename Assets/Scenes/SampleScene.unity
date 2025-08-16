@@ -1333,6 +1333,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1151316552}
   - component: {fileID: 1151316555}
+  - component: {fileID: 1151316556}
   - component: {fileID: 1151316554}
   - component: {fileID: 1151316553}
   m_Layer: 0
@@ -1427,6 +1428,8 @@ MonoBehaviour:
   Jumpkey: 32
   JumpForce: 7
   JumpCoolDown: 0.5
+  AirMultiplier: 0.2
+  AirDrag: 0.75
   Canjump: 1
   DashKey: 113
   DashMultiplier: 2
@@ -1436,6 +1439,18 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   GroundDrag: 5
+--- !u!114 &1151316556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1151316551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8df255586cd1f6845b292cd1a64e7c51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1179980364
 GameObject:
   m_ObjectHideFlags: 0
