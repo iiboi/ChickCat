@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private KeyCode Jumpkey;
     [SerializeField, Range(0f, 20f)] private float JumpForce;
-
     [SerializeField] private float JumpCoolDown;
     [SerializeField] private float AirMultiplier;
     [SerializeField] private float AirDrag;
@@ -25,7 +24,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private KeyCode DashKey;
     [SerializeField] private float DashMultiplier;
-
     [SerializeField] private float DashDrag;
 
     [Header("Ground Check Settings")]
