@@ -1425,7 +1425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OrientationTransform: {fileID: 2071907610}
   MovementKey: 101
-  MovementSpeed: 20
+  MovementSpeed: 40
   Jumpkey: 32
   JumpForce: 7
   JumpCoolDown: 0.5
@@ -1433,8 +1433,8 @@ MonoBehaviour:
   AirDrag: 0.75
   Canjump: 1
   DashKey: 113
-  DashMultiplier: 2
-  DashDrag: 2
+  DashMultiplier: 1.1
+  DashDrag: 2.2
   PlayerHeight: 1
   GroundLayer:
     serializedVersion: 2
