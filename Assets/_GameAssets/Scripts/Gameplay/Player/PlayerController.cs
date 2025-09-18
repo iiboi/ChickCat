@@ -108,8 +108,6 @@ public class PlayerController : MonoBehaviour
         {
             StateController.ChangeState(NewState);
         }
-
-        Debug.Log(NewState);
     }
 
 
