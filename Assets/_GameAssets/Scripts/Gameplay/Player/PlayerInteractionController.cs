@@ -14,7 +14,7 @@ public class PlayerInteractionController : MonoBehaviour
         }
         if (other.CompareTag(Consts.WheatTypes.ROTTEN_WHEAT))
         {
-            Debug.Log("Rotten Wheat Collectedé");
+            Debug.Log("Rotten Wheat Collected!");
         }
     }
 }
