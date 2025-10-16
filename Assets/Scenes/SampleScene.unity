@@ -1706,6 +1706,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1256290711}
+  - component: {fileID: 1256290712}
   - component: {fileID: 1256290710}
   m_Layer: 0
   m_Name: HolyWeat
@@ -1751,6 +1752,21 @@ Transform:
   - {fileID: 56890806}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1256290712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256290709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6a07cc9a8c4e1c4aaf2521e8be81aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerController: {fileID: 1151316555}
+  ForceIncrease: 8
+  ResetBoostDuration: 5
 --- !u!1 &1326310735
 GameObject:
   m_ObjectHideFlags: 0
@@ -2142,6 +2158,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1903381951}
+  - component: {fileID: 1903381952}
   - component: {fileID: 1903381950}
   m_Layer: 0
   m_Name: RottenWheat
@@ -2187,6 +2204,21 @@ Transform:
   - {fileID: 1883477649}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1903381952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1903381949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 412f5edafdb64bb4180b4facfab2ef4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerController: {fileID: 1151316555}
+  MovementDecreaseSpeed: -25
+  ResetBoostDuration: 5
 --- !u!1 &2071907609
 GameObject:
   m_ObjectHideFlags: 0
@@ -2336,6 +2368,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2127839210}
+  - component: {fileID: 2127839212}
   - component: {fileID: 2127839211}
   m_Layer: 0
   m_Name: GoldWheat
@@ -2381,6 +2414,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.7713875, y: 1.0413111, z: 0.20724458}
   m_Center: {x: 0.034729034, y: -0.18771869, z: 0}
+--- !u!114 &2127839212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127839209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 506b0cbf160058f41bd9f736b8d8fe31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerController: {fileID: 1151316555}
+  MovementIncreaseSpeed: 15
+  ResetBoostDuration: 5
 --- !u!1 &2138920771
 GameObject:
   m_ObjectHideFlags: 0
