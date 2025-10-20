@@ -3,11 +3,24 @@ using UnityEngine;
 
 public class PlayerInteractionController : MonoBehaviour
 {
-    void OnTriggerEnter(Collider other)
+    private PlayerController PlayerController;
+    private void Awake()
     {
-        if(other.gameObject.TryGetComponent<ICollectible>(out var collectible))
+        PlayerController = GetComponent<PlayerController>();
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.TryGetComponent<ICollectible>(out var collectible))
         {
             collectible.Collect();
+        }
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if(other.gameObject.TryGetComponent<IBoostable>(out var boostable))
+        {
+            boostable.boost(PlayerController);
         }
     }
 }
