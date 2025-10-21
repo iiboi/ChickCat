@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public event Action OnPlayerJumped;
 
+    public event Action<PlayerState> OnPlayerStateChanged;
 
     [Header("References")]
     [SerializeField] private Transform OrientationTransform;
@@ -97,6 +98,7 @@ public class PlayerController : MonoBehaviour
         var Isgrounded = IsGrounded();
         var CurrentState = StateController.GetCurrentState();
         var Isdashing = isdashing();
+        
 
         var NewState = CurrentState switch
         {
@@ -111,6 +113,7 @@ public class PlayerController : MonoBehaviour
         if (NewState != CurrentState)
         {
             StateController.ChangeState(NewState);
+            OnPlayerStateChanged?.Invoke(NewState);
         }
     }
 
