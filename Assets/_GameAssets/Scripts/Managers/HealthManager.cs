@@ -28,6 +28,9 @@ public class HealthManager : MonoBehaviour
     
     public void Heal(int healAmount)
     {
-        
+        if(CurrentHealth < MaxHealth)
+        {
+            CurrentHealth = Mathf.Min(CurrentHealth + healAmount, MaxHealth);
+        }
     }
 }
