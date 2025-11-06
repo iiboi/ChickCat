@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class SettingsUI : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private GameManager GameManager;
     [SerializeField] private GameObject SettingsPopupObject;
     [SerializeField] private GameObject BlackBackgroundObject;
 
@@ -31,7 +30,7 @@ public class SettingsUI : MonoBehaviour
     }
     private void OnSettingsButtonClicked()
     {
-        GameManager.ChangeGameState(GameState.Pause);
+        GameManager.Instance.ChangeGameState(GameState.Pause);
         BlackBackgroundObject.SetActive(true);
         SettingsPopupObject.SetActive(true);
 
@@ -46,7 +45,7 @@ public class SettingsUI : MonoBehaviour
         BlackBackgroundImage.DOFade(0f, AnimationDuration).SetEase(Ease.Linear);
         SettingsPopupObject.transform.DOScale(0f, AnimationDuration).SetEase(Ease.OutExpo).OnComplete(() =>
         {
-            GameManager.ChangeGameState(GameState.Resume);
+            GameManager.Instance.ChangeGameState(GameState.Resume);
             BlackBackgroundObject.SetActive(false);
             SettingsPopupObject.SetActive(false);
         });

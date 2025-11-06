@@ -44,7 +44,13 @@ public class GameManager : MonoBehaviour
             //WIN GAME
             Debug.Log("Game Win!");
             EggCounterUI.SettEggComplited();
+            ChangeGameState(GameState.GameOver);
         }
         Debug.Log("Egg Count: " + CurrentEggCount);
+    }
+
+    public GameState GetCurrentGameState()
+    {
+        return CurrentGameState;
     }
 }
