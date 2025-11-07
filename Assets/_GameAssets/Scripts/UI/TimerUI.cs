@@ -16,6 +16,7 @@ public class TimerUI : MonoBehaviour
     private float ElapsedTime;
     private bool IstimerRunning;
     private Tween RotationTween;
+    private string FinalTime;
 
     private void Start()
     {
@@ -31,12 +32,15 @@ public class TimerUI : MonoBehaviour
         {
             case GameState.Pause:
                 //PAUSE TIMER
-                PauseTimer();
+                StopTimer();
                 break;
 
             case GameState.Resume:
                 //RESUME TIMER
                 ResumeTimer();
+                break;
+            case GameState.GameOver:
+                Finishtimer();
                 break;
         }
     }
@@ -55,16 +59,16 @@ public class TimerUI : MonoBehaviour
         InvokeRepeating(nameof(UpdateTimerUI), 0f, 1f);
     }
 
-    private void PauseTimer()
+    private void StopTimer()
     {
         IstimerRunning = false;
         CancelInvoke(nameof(UpdateTimerUI));
         RotationTween.Pause();
     }
-    
+
     private void ResumeTimer()
     {
-        if(!IstimerRunning)
+        if (!IstimerRunning)
         {
             IstimerRunning = true;
             InvokeRepeating(nameof(UpdateTimerUI), 0f, 1f);
@@ -72,14 +76,33 @@ public class TimerUI : MonoBehaviour
         }
     }
 
+    private void Finishtimer()
+    {
+        StopTimer();
+        FinalTime = GetFormattedElapsedTime();
+    }
+    
+    private string GetFormattedElapsedTime()
+    {
+        int minutes = Mathf.FloorToInt(ElapsedTime / 60f);
+        int seconds = Mathf.FloorToInt(ElapsedTime % 60f);
+
+        return string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
     private void UpdateTimerUI()
     {
-        if(!IstimerRunning) { return; }
+        if (!IstimerRunning) { return; }
         ElapsedTime += 1f;
 
         int minutes = Mathf.FloorToInt(ElapsedTime / 60f);
         int seconds = Mathf.FloorToInt(ElapsedTime % 60f);
 
         TimerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+    
+    public string GetFinalTime()
+    {
+        return FinalTime;
     }
 }
