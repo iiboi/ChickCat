@@ -7948,7 +7948,7 @@ GameObject:
   - component: {fileID: 1151316556}
   - component: {fileID: 1151316554}
   - component: {fileID: 1151316553}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8088,6 +8088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 083ecf3fd9fdad04892fdd35c32452da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerVisualTransform: {fileID: 9114657150022846329}
 --- !u!1 &1152972833
 GameObject:
   m_ObjectHideFlags: 0
@@ -8999,7 +9000,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7763888789534142466, guid: 69ef6ec9a0720ab4181a382ad028a657, type: 3}
+    - {fileID: 1606826185609682172, guid: 69ef6ec9a0720ab4181a382ad028a657, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69ef6ec9a0720ab4181a382ad028a657, type: 3}
@@ -9804,6 +9807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aba9c6917e206e24baad0378e36532cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerHealthUI: {fileID: 524558183}
   MaxHealth: 3
 --- !u!1001 &1510862466
 PrefabInstance:

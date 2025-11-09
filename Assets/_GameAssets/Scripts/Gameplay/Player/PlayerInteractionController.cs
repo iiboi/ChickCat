@@ -3,10 +3,13 @@ using UnityEngine;
 
 public class PlayerInteractionController : MonoBehaviour
 {
+    [SerializeField] private Transform PlayerVisualTransform;
     private PlayerController PlayerController;
+    private Rigidbody PlayerRigidBody;
     private void Awake()
     {
         PlayerController = GetComponent<PlayerController>();
+        PlayerRigidBody = GetComponent<Rigidbody>();
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -18,9 +21,17 @@ public class PlayerInteractionController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if(other.gameObject.TryGetComponent<IBoostable>(out var boostable))
+        if (other.gameObject.TryGetComponent<IBoostable>(out var boostable))
         {
             boostable.boost(PlayerController);
+        }
+    }
+
+    private void OnParticleCollision(GameObject other)
+    {
+        if(other.TryGetComponent<IDamageable>(out var damageable))
+        {
+            damageable.GiveDamage(PlayerRigidBody, PlayerVisualTransform);
         }
     }
 }
