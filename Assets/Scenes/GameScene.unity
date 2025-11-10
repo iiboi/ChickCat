@@ -5449,6 +5449,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 623950672}
+  - component: {fileID: 623950677}
+  - component: {fileID: 623950678}
   - component: {fileID: 623950673}
   - component: {fileID: 623950674}
   - component: {fileID: 623950675}
@@ -5545,6 +5547,36 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &623950677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 623950671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91eac919f9c1c004a9a34fed9f184088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentCatState: 1
+--- !u!114 &623950678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 623950671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 552a50de72387c84bb2f06ae7e3f8a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefaultSpeed: 5
+  ChaseSpeed: 8
+  PatrolRadius: 28
+  WaitTime: 2
+  MaxDestinationAttemps: 10
 --- !u!1 &645594150
 GameObject:
   m_ObjectHideFlags: 0
@@ -8154,7 +8186,7 @@ MonoBehaviour:
   PlayerHeight: 1
   GroundLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 320
   GroundDrag: 5
 --- !u!114 &1151316556
 MonoBehaviour:
@@ -9100,6 +9132,10 @@ PrefabInstance:
     - target: {fileID: 4598623134578917973, guid: 69ef6ec9a0720ab4181a382ad028a657, type: 3}
       propertyPath: m_Carve
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5812855996981238297, guid: 69ef6ec9a0720ab4181a382ad028a657, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5931138927592689808, guid: 69ef6ec9a0720ab4181a382ad028a657, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
