@@ -5572,11 +5572,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552a50de72387c84bb2f06ae7e3f8a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerController: {fileID: 1151316555}
+  PlayerTransform: {fileID: 1151316552}
   DefaultSpeed: 5
   ChaseSpeed: 8
   PatrolRadius: 28
   WaitTime: 2
   MaxDestinationAttemps: 10
+  ChaseDistanceThreshold: 2.25
+  ChaseDistance: 2.75
 --- !u!1 &645594150
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,6 +3,9 @@ using UnityEngine.AI;
 
 public class CatController : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] private PlayerController PlayerController;
+    [SerializeField] private Transform PlayerTransform;
 
     [Header("Settings")]
     [SerializeField] private float DefaultSpeed = 5f;
@@ -12,12 +15,16 @@ public class CatController : MonoBehaviour
     [SerializeField] private float PatrolRadius = 10f;
     [SerializeField] private float WaitTime = 2f;
     [SerializeField] private int MaxDestinationAttemps = 10;
+    [SerializeField] private float ChaseDistanceThreshold = 1.5f;
+    [SerializeField] private float ChaseDistance = 2f;
+
     private NavMeshAgent CatAgent;
     private CatStateController catStateController;
 
 
     private float Timer;
     private bool IsWaiting;
+    private bool IsChasing;
     private Vector3 InitialPosition;
 
     private void Awake()
@@ -31,10 +38,32 @@ public class CatController : MonoBehaviour
         InitialPosition = transform.position;
         SetRandomDestination();
     }
-    
-    private void Update() 
+
+    private void Update()
     {
-        SetPatrolMovement();
+        if(PlayerController.CanCatChase())
+        {
+            SetChaseMovement();
+        }
+        else
+        {
+            SetPatrolMovement();
+        }
+    }
+    
+    private void SetChaseMovement()
+    {
+        Vector3 DirectionToPlayer = (PlayerTransform.position - transform.position).normalized;
+        Vector3 OffsetPosition = PlayerTransform.position - DirectionToPlayer * ChaseDistanceThreshold;
+        CatAgent.SetDestination(OffsetPosition);
+        CatAgent.speed = ChaseSpeed;
+        catStateController.ChangeState(CatState.Running);
+
+        if (Vector3.Distance(transform.position, PlayerTransform.position) <= ChaseDistance && IsChasing)
+        {
+            catStateController.ChangeState(CatState.Attacking);
+            IsChasing = false;
+        }
     }
 
     private void SetPatrolMovement()
