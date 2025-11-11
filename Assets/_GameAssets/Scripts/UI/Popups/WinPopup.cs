@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using DG.Tweening;
+using MaskTransitions;
 
 public class WinPopup : MonoBehaviour
 {
@@ -17,10 +18,15 @@ public class WinPopup : MonoBehaviour
         TimerText.text = TimerUI.GetFinalTime();
 
         OneMoreButton.onClick.AddListener(OneMoreButtonClicked);
+
+        MainMenuButton.onClick.AddListener(() =>
+        {
+            TransitionManager.Instance.LoadLevel(Consts.SceneNames.MENU_SCENE);
+        });
     }
 
     private void OneMoreButtonClicked()
     {
-        SceneManager.LoadScene(Consts.SceneNames.GAME_SCENE);
+        TransitionManager.Instance.LoadLevel(Consts.SceneNames.GAME_SCENE);
     }
 }
