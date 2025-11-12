@@ -3,6 +3,7 @@ using System.Collections;
 using System.IO.Compression;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.UI;
 
 public class PlayerStateUI : MonoBehaviour
@@ -14,6 +15,7 @@ public class PlayerStateUI : MonoBehaviour
     [SerializeField] private RectTransform BoosterSpeedTransform;
     [SerializeField] private RectTransform BoosterJumpTransform;
     [SerializeField] private RectTransform BoosterSlowTransform;
+    [SerializeField] private PlayableDirector PlayableDirector;
 
     [Header("Images")]
 
