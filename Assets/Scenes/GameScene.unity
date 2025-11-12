@@ -9212,6 +9212,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Environment
       objectReference: {fileID: 0}
+    - target: {fileID: 2589424061923820202, guid: 69ef6ec9a0720ab4181a382ad028a657, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097977527915869878, guid: 69ef6ec9a0720ab4181a382ad028a657, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4198289125037216027, guid: 69ef6ec9a0720ab4181a382ad028a657, type: 3}
       propertyPath: m_Carve
       value: 1
