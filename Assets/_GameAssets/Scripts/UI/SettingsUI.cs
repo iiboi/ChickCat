@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using MaskTransitions;
 using UnityEngine;
@@ -16,15 +17,27 @@ public class SettingsUI : MonoBehaviour
     [SerializeField] private Button ResumeButton;
     [SerializeField] private Button MainMenuButton;
 
+    [Header("Sprites")]
+    [SerializeField] private Sprite MusicActiveSprite;
+    [SerializeField] private Sprite MusicPassiveSprite;
+    [SerializeField] private Sprite SoundActiveSprite;
+    [SerializeField] private Sprite SoundPassiveSprite;
+
     [Header("Settings")]
     [SerializeField] private float AnimationDuration;
 
     private Image BlackBackgroundImage;
 
+    private bool IsMusicActive;
+    private bool IsSoundActive;
+
     private void Awake() 
     {
         BlackBackgroundImage = BlackBackgroundObject.GetComponent<Image>();
         SettingsPopupObject.transform.localScale = Vector3.zero;
+
+        IsMusicActive = true;
+        IsSoundActive = true;
 
         SettingsButton.onClick.AddListener(OnSettingsButtonClicked);
         ResumeButton.onClick.AddListener(OnResumeButtonClicked);
@@ -34,7 +47,27 @@ public class SettingsUI : MonoBehaviour
             AudioManager.Instance.Play(SoundType.TransitionSound);
             TransitionManager.Instance.LoadLevel(Consts.SceneNames.MENU_SCENE);
         });
+
+        MusicButton.onClick.AddListener(OnMusicButtonClicked);
+        SoundButton.onClick.AddListener(OnSoundButtonClicked);
     }
+
+    private void OnSoundButtonClicked()
+    {
+        AudioManager.Instance.Play(SoundType.ButtonClickSound);
+        IsSoundActive = !IsSoundActive;
+        SoundButton.image.sprite = IsSoundActive ? SoundActiveSprite : SoundPassiveSprite;
+        AudioManager.Instance.SetSoundEffectsMute(!IsSoundActive);
+    }
+
+    private void OnMusicButtonClicked()
+    {
+        AudioManager.Instance.Play(SoundType.ButtonClickSound);
+        IsMusicActive = !IsMusicActive;
+        MusicButton.image.sprite = IsMusicActive ? MusicActiveSprite : MusicPassiveSprite;
+        BackgroundMusic.Instance.SetMusicMute(!IsMusicActive);
+    }
+
     private void OnSettingsButtonClicked()
     {
         GameManager.Instance.ChangeGameState(GameState.Pause);
