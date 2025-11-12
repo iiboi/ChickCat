@@ -28,8 +28,8 @@ public class SettingsUI : MonoBehaviour
 
     private Image BlackBackgroundImage;
 
-    private bool IsMusicActive;
-    private bool IsSoundActive;
+    [SerializeField] private bool IsMusicActive;
+    [SerializeField] private bool IsSoundActive;
 
     private void Awake() 
     {
