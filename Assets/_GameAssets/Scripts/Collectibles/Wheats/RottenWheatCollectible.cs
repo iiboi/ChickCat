@@ -19,8 +19,11 @@ public class RottenWheatCollectible : MonoBehaviour, ICollectible
     public void Collect()
     {
         PlayerController.SetMovementSpeed(WheatDesignSO.IncreaseDecreaseMultiplier, WheatDesignSO.ResetBoostDuration);
-        PlayerStateUI.PlayBoosterUIAnimations(PlayerBoosterTransform, PlayerBoosterImage, PlayerStateUI.GetRottenBoosterWheatImage,
-        WheatDesignSO.ActiveSprite, WheatDesignSO.PassiveSprite, WheatDesignSO.ActiveWheatSprite, WheatDesignSO.PassiveWheatSprite, WheatDesignSO.ResetBoostDuration);
+          PlayerStateUI.PlayBoosterUIAnimations(PlayerBoosterTransform, PlayerBoosterImage, PlayerStateUI.GetRottenBoosterWheatImage,
+          WheatDesignSO.ActiveSprite, WheatDesignSO.PassiveSprite, WheatDesignSO.ActiveWheatSprite, WheatDesignSO.PassiveWheatSprite, WheatDesignSO.ResetBoostDuration);
+        
+        CameraShake.Instance.ShakeCamera(0.5f, 0.5f);
+        
         Destroy(gameObject);
     }
 }

@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
 
     public static GameManager Instance { get; private set; }
+    private bool IsCatCatched;
 
     public event Action<GameState> OnGameStateChanged;
 
@@ -35,8 +36,14 @@ public class GameManager : MonoBehaviour
 
     private void CatController_OnCatCatched()
     {
-        PlayerHealthUI.AnimateDamageForAll();
-        StartCoroutine(OneGameOver());
+        if (!IsCatCatched)
+        {
+            PlayerHealthUI.AnimateDamageForAll();
+            StartCoroutine(OneGameOver());
+            CameraShake.Instance.ShakeCamera(1f, 0.8f, 0.3f);
+
+            IsCatCatched = true;
+        }
     }
 
     private void HealthManager_OnPlayerDeath()

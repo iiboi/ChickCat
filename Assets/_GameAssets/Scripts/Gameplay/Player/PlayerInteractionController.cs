@@ -32,6 +32,7 @@ public class PlayerInteractionController : MonoBehaviour
         if(other.TryGetComponent<IDamageable>(out var damageable))
         {
             damageable.GiveDamage(PlayerRigidBody, PlayerVisualTransform);
+            CameraShake.Instance.ShakeCamera(0.7f, 0.5f);
         }
     }
 }
