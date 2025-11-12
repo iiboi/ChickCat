@@ -51,8 +51,15 @@ public class PlayerStateUI : MonoBehaviour
     private void Start()
 {
         PlayerController.OnPlayerStateChanged += PlayerController_OnPlayerStateChanged;
-        SetStateUserInterfaces(PlayerWalkingActiveSprite, PlayerDashingPassiveSprite, PlayerWalkingTransform, PlayerDashingTransform);
+        PlayableDirector.stopped += OnTimelineFinished;
+
+        
 }
+
+    private void OnTimelineFinished(PlayableDirector director)
+    {
+        SetStateUserInterfaces(PlayerWalkingActiveSprite, PlayerDashingPassiveSprite, PlayerWalkingTransform, PlayerDashingTransform);
+    }
 
     private void PlayerController_OnPlayerStateChanged(PlayerState playerState)
     {

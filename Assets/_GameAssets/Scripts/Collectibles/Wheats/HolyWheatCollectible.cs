@@ -22,8 +22,10 @@ public class HolyWheatCollectible : MonoBehaviour, ICollectible
 
         PlayerStateUI.PlayBoosterUIAnimations(PlayerBoosterTransform, PlayerBoosterImage, PlayerStateUI.GetHolyBoosterWheatImage,
           WheatDesignSO.ActiveSprite, WheatDesignSO.PassiveSprite, WheatDesignSO.ActiveWheatSprite, WheatDesignSO.PassiveWheatSprite, WheatDesignSO.ResetBoostDuration);
-        
+
         CameraShake.Instance.ShakeCamera(0.5f, 0.5f);
+        AudioManager.Instance.Play(SoundType.PickupGoodSound);
+        
         
         Destroy(gameObject);
     }
